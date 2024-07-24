@@ -5,7 +5,6 @@ import {
     TableBody,
     TableCaption,
     TableCell,
-    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
@@ -14,8 +13,6 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
   
@@ -36,7 +33,6 @@ const Main = () => {
 
     const getData = async () => {
         const { data } = await axios.get('http://127.0.0.1:5000/api/test-case')
-        console.log(data.data)
         setCases(data.data)
     }
 
@@ -46,7 +42,6 @@ const Main = () => {
 
     const handleStatus = async (status: string, id: Number) => {
         const {data} = await axios.put('http://127.0.0.1:5000/api/test-case/' + id, {status})
-        console.log(data)
         cases.map((item) => {
             if (item.case_id == data.id) {
                 item.status = data.status
